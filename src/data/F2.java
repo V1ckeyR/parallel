@@ -1,4 +1,4 @@
-import data.Data;
+package data;
 
 import java.util.Arrays;
 
@@ -18,9 +18,9 @@ public class F2 implements Runnable {
         if (N > 1000) {
             switch (method) {
                 case File -> {
-                    ML = d.getFiledMatrix("ML.txt");
-                    MH = d.getFiledMatrix("MH.txt");
-                    MG = d.getFiledMatrix("MG.txt");
+                    ML = d.getFiledMatrix("asset/ML.txt");
+                    MH = d.getFiledMatrix("asset/MH.txt");
+                    MG = d.getFiledMatrix("asset/MG.txt");
                 }
                 case Number -> {
                     ML = d.getNumberedMatrix(1);

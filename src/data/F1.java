@@ -20,11 +20,11 @@ public class F1 implements Runnable {
         if (N > 1000) {
             switch (method) {
                 case File -> {
-                    R = d.getFiledVector("R.txt");
-                    S2 = d.getFiledVector("S2.txt");
-                    MO = d.getFiledMatrix("ML.txt");
-                    MP = d.getFiledMatrix("MH.txt");
-                    v = d.getFiledScalar("v.txt");
+                    R = d.getFiledVector("asset/R.txt");
+                    S2 = d.getFiledVector("asset/S2.txt");
+                    MO = d.getFiledMatrix("asset/ML.txt");
+                    MP = d.getFiledMatrix("asset/MH.txt");
+                    v = d.getFiledScalar("asset/v.txt");
                 }
                 case Number -> {
                     R = d.getNumberedVector(1);

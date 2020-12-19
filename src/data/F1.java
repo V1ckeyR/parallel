@@ -9,13 +9,18 @@ public class F1 implements Runnable {
     int[] R, S2;
     int v;
 
-    public F1(int n, Data.Method method) {
-        this.N = n;
+    public F1(int N, Data.Method method) {
+        this.N = N;
         this.method = method;
     }
 
     @Override
     public void run() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Data d = new Data(N);
         if (N > 1000) {
             switch (method) {
@@ -43,9 +48,23 @@ public class F1 implements Runnable {
                 default -> throw new Error();
             }
         } else {
-            // keyboard
+            if (method == Data.Method.Keyboard) {
+                synchronized (System.in) {
+                    synchronized (System.out) {
+                        R = d.getKeyboardVector();
+                        S2 = d.getKeyboardVector();
+                        MO = d.getKeyboardMatrix();
+                        MP = d.getKeyboardMatrix();
+                        v = d.getKeyboardScalar();
+                    }
+                }
+            } else {
+                throw new Error();
+            }
         }
+
         int[] S = Data.vectorsSum(Data.matrixVectorMulti(R, Data.matricesMulti(MO, MP)), Data.vectorScalarMulti(S2, v));
+
         System.out.println("S = " + Arrays.toString(S));
     }
 }

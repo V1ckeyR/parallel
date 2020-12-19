@@ -2,7 +2,6 @@ package data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -150,6 +149,36 @@ public class Data {
     public int getRandomizedScalar() {
         Random r = new Random();
         return r.nextInt(50);
+    }
+
+    public int[][] getKeyboardMatrix() {
+        int[][] a = new int[n][n];
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введіть матрицю для " + Thread.currentThread().getName() + ":");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = in.nextInt();
+            }
+        }
+        return a;
+    }
+
+    public int[] getKeyboardVector() {
+        int[] v = new int[n];
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введіть вектор для "  + Thread.currentThread().getName() + ":");
+        for (int i = 0; i < n; i++) {
+            v[i] = in.nextInt();
+        }
+        return v;
+    }
+
+    public int getKeyboardScalar() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введіть скаляр для " + Thread.currentThread().getName() + ":");
+        return in.nextInt();
     }
 
     public enum Method {

@@ -7,8 +7,8 @@ public class F2 implements Runnable {
     private final Data.Method method;
     int[][] ML, MH, MG;
 
-    public F2(int n, Data.Method method) {
-        this.N = n;
+    public F2(int N, Data.Method method) {
+        this.N = N;
         this.method = method;
     }
 
@@ -35,9 +35,26 @@ public class F2 implements Runnable {
                 default -> throw new Error();
             }
         } else {
-            // keyboard
+            if (method == Data.Method.Keyboard) {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                synchronized (System.in) {
+                    synchronized (System.out) {
+                        ML = d.getKeyboardMatrix();
+                        MH = d.getKeyboardMatrix();
+                        MG = d.getKeyboardMatrix();
+                    }
+                }
+            } else {
+                throw new Error();
+            }
         }
+
         int[][] MK = Data.matricesSum(ML, Data.matricesMulti(MH, MG));
+
         System.out.println("MK = " + Arrays.deepToString(MK));
     }
 }
